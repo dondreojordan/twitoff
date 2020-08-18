@@ -20,6 +20,8 @@ def create_app():
     @app.route('/update')
     def update():
         # Update the database
+        DB.drop_all()
+        DB.create_all()
         insert_example_users()
         return render_template('base2.html', title='Users updated!',
                                users=User.query.all())
