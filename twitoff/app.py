@@ -6,7 +6,7 @@ from .models import *
 def create_app():
     """Create and configure an instance of the Flask application"""
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///twitoff.db.sqlite3'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     DB.init_app(app)  # Might have to delete file for editing.
     
@@ -18,13 +18,14 @@ def create_app():
     
     @app.route('/update')
     def update():
-        # Reset the Database
+        # Update the Database
         DB.drop_all()
         DB.create_all()
-        insert_example_users
-        insert_example_tweets
+        insert_example_users()
+        insert_example_tweets()
         return render_template('base2.html', title='Users Updated',
                                users=User.query.all())
+
 
 
     return app
