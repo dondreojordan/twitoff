@@ -55,6 +55,7 @@ def insert_example_tweets():
                           text="""I wish my bed was as comfortable 
                           when I try to sleep as it is when my alarm goes off...""",
                           user='dondre')
+    
     DB.session.add(austen_tweet)
     DB.session.add(austen_tweet2)
     DB.session.add(elon_tweet)
