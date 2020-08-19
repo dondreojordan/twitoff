@@ -9,7 +9,7 @@ class User(DB.Model):
     """Twitter users corresponding to Tweets."""
     id = DB.Column(DB.BigInteger, primary_key=True)
     name = DB.Column(DB.String(15), nullable=False)
-    # Tweet IDs are ordinal ints, so can be used to fetch only more recent
+    # Tweet IDs are ordinal integers, so can be used to fetch only more recent
     newest_tweet_id = DB.Column(DB.BigInteger)
 
     def __repr__(self):

@@ -19,17 +19,27 @@
       {% block content %}
       <h1 style="font-size:95px;" style="text-align:center;">Welcome to TwitOff!</h1>
       <div>
-        <h2>Users</h2>
+        <h2 style="font-size:35px;">Users:</h2>
         {% for user in users %}
         <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
         {% endfor %}
       </div>
       {% endblock %}
-      <p style="font-size:28px">An API that takes two Twitter users and 
-        <br>compares which is more probable to have that 'Tweet'... Cool, Right?!
-        <p style="font-size:48px">
-          &#9994;  &#128525;  &#128516;  &#129311;  &#128151; 
-      </p>
+      <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
+      style="background-color:gold;width:600px;height:20px;padding:40px;">
+      Mouse Over Me</div>
+
+      <script style="font-size:48px">
+      function mOver(obj) {
+        obj.innerHTML = "Black Lives Matter"
+      }
+
+      function mOut(obj) {
+        obj.innerHTML = 'Be Sure to Vote'
+      }
+      </script>
+      <p style="font-size:29px">An API that takes two Twitter users and 
+        <br>compares which is more probable to have that 'Tweet'... Cool, Right?! &#9994;  &#128525;  &#128516;  &#129311;  &#128151; 
     </article>
     <!-- Optional stretch - check out some front-end JavaScript! -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->

@@ -10,11 +10,15 @@ TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGo',
                  'common_squirrel', 'KenJennings', 'conanobrien',
                  'big_ben_clock', 'IAM_SHAKESPEARE']
 
-TWITTER_API_KEY = getenv('TWITTER_API_KEY')
-TWITTER_API_KEY_SECRET = getenv('TWITTER_API_KEY_SECRET')
+# TWITTER_API_KEY = getenv('TWITTER_API_KEY')
+# TWITTER_API_KEY_SECRET = getenv('TWITTER_API_KEY_SECRET')
+TWITTER_API_KEY = 'XXSJfAwWOsOpxhL5MamiehOeg'
+TWITTER_API_KEY_SECRET = 't1wRL454PWzardeNEJjJ572Af6V5hB264U0oYH9u9TsngvucmC'
 TWITTER_AUTH = tweepy.OAuthHandler(TWITTER_API_KEY, TWITTER_API_KEY_SECRET)
 TWITTER = tweepy.API(TWITTER_AUTH)
-BASILICA = basilica.Connection(getenv('BASILICA_KEY'))
+# BASILICA = basilica.Connection(getenv('BASILICA_KEY'))
+BASILICA_KEY = '5f5c7789-c52f-f506-68ba-d15c82ae2283'
+BASILICA = basilica.Connection(BASILICA_KEY)
 
 
 def add_or_update_user(username):
@@ -23,8 +27,8 @@ def add_or_update_user(username):
         twitter_user = TWITTER.get_user(username)
         db_user = (User.query.get(twitter_user.id) or
                    User(id=twitter_user.id, name=username))
-        DB.session.add(db_user)
-        # Lets get the tweets - focusing on primary (not retweet/reply)
+        DB.session.add(db_user)  # Save
+        # Lets get the tweets - focusing on primary (NOT retweet/reply)
         tweets = twitter_user.timeline(
             count=200, exclude_replies=True, include_rts=False,
             tweet_mode='extended', since_id=db_user.newest_tweet_id
