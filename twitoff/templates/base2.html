@@ -4,7 +4,7 @@
     <title>TwitOff - {{ title }}</title>
     <link rel="stylesheet" href="https://unpkg.com/picnic"/>
   </head>
-  <body style="background-color:gold;">
+  <body style="background-color:lightblue;">
     <nav>
       <a href="/" class="brand"><span>TwitOff!</span></a>
       <!-- responsive-->
@@ -13,20 +13,45 @@
       <div class="menu">
         <a href="/update" class="button warning">Update Tweets</a>
         <a href="/reset" class="button error">Reset Database</a>
+        <a href="https://twitter.com/dondre_jordan" class="button">Compare</a>
+        <button class='success'>Follow Me</button>
       </div>
     </nav>
     <article class="flex two" style="padding: 3em 1em;">
       {% block content %}
-      <h1 style="font-size:95px;" style="text-align:center;">Welcome to TwitOff!</h1>
-      <div>
-        <h2 style="font-size:35px;">Users:</h2>
-        {% for user in users %}
-        <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
-        {% endfor %}
-      </div>
-      {% endblock %}
+      <h1 style="font-size:80px;" style="text-align:center;">Welcome to TwitOff!</h1>
+      <form action="/compare" method="post">
+        <h2 style="text-align:right;">Compare Users</h2>
+        <select name="user1">
+          {% for user in users %}
+          <option value="{{ user.name }}">{{ user.name }}</option>
+          <input type="text" name="tweet_text" placeholder="Select First User">
+          {% endfor %}
+        </select>
+        <select name="user2">
+          {% for user in users %}
+          <option value="{{ user.name }}">{{ user.name }}</option>
+          <input type="text" name="tweet_text" placeholder="Select Second User">
+          {% endfor %}
+        </select>
+        <input type="text" name="tweet_text" placeholder="Type Tweet text to compare prediction">
+        <input type="submit" value="Compare Users">
+      </form>
+    </div>
+    <div>
+      <h2>Add User</h2>
+      {% for user in users %}
+      <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
+      {% endfor %}
+      <form action="/user" method="post">
+        <input type="text" name="user_name" placeholder="User to add">
+        <input type="submit" value="Add User">
+      </form>
+    </div>
+    {% endblock %}
       <div onmouseover="mOver(this)" onmouseout="mOut(this)" 
-      style="background-color:gold;width:600px;height:20px;padding:40px;">
+      style="font-size:48px"
+      style="background-color:lightblue;width:1000px;height:20px;padding:40px;">
       Mouse Over Me</div>
 
       <script style="font-size:48px">
@@ -35,7 +60,7 @@
       }
 
       function mOut(obj) {
-        obj.innerHTML = 'Be Sure to Vote'
+        obj.innerHTML = 'Be Sure to Vote! 11/3/2020'
       }
       </script>
       <p style="font-size:29px">An API that takes two Twitter users and 
@@ -44,9 +69,8 @@
     <!-- Optional stretch - check out some front-end JavaScript! -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
 
-
-    <h1 title="I'm a header" style="color:white;" style="font-family:courier;">331, Web Application Development with Flask</h1>
-    <p style="color:purple;"> 
+    <h1 title="I'm a header" style="color:black;" style="font-family:courier;">331, Web Application Development with Flask</h1>
+    <p style="color:white;"> 
       What went well (in the context of working on the assignment) today?
       <br>
       <br>
@@ -63,8 +87,8 @@
     <img src="https://images.pexels.com/photos/1161547/pexels-photo-1161547.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt= "Moon" width="550" height="400">
     
 
-    <h2 title="I'm a header" style="color:white;" style="font-family:courier;">332, Consuming Data from and API</h2>
-    <p style="color:purple;"> 
+    <h2 title="I'm a header" style="color:black;" style="font-family:courier;">332, Consuming Data from and API</h2>
+    <p style="color:white;"> 
       What went well (in the context of working on the assignment) today?
       What was particularly interesting or surprising about the topic(s) today?
       What was the most challenging part of the work today, and why?
@@ -73,15 +97,15 @@
     <p >This is a <br> paragraph with a line break.</p>
     
 
-    <h3 title="I'm a header" style="color:white;" style="font-family:courier;">333, Addiding Data Scince to a Web Application</h3>
-    <p style="color:purple;"> 
+    <h3 title="I'm a header" style="color:black;" style="font-family:courier;">333, Addiding Data Scince to a Web Application</h3>
+    <p style="color:white;"> 
       What went well (in the context of working on the assignment) today?
       What was particularly interesting or surprising about the topic(s) today?
       What was the most challenging part of the work today, and why?
     </p>
 
-      <h4 title="I'm a header" style="color:white;" style="font-family:courier;">334, Web Application Deployment</h4>
-      <p style="color:purple;"> 
+      <h4 title="I'm a header" style="color:black;" style="font-family:courier;">334, Web Application Deployment</h4>
+      <p style="color:white;"> 
         What went well (in the context of working on the assignment) today?
         What was particularly interesting or surprising about the topic(s) today?
         What was the most challenging part of the work today, and why?
@@ -89,9 +113,9 @@
 
     <p >HTML links are defined with the a tag:</p>
     <p >HTML images are defined with the img tag:</p>
-    <h6 title="I'm a header" style="color:white;" style="font-family:courier;">Github Link</h2>
+    <h6 title="I'm a header" style="color:black;" style="font-family:courier;">Github Link</h2>
     <a href="https://github.com/dondreojordan/twitoff"> Want to see my GitHub?</a>
 
-    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.greenmtn.edu%2Fwordpress%2Fwp-content%2Fuploads%2F22950856_blmvt.jpg&f=1&nofb=1" alt="Twitoff" width="1400" height="200">
+    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.greenmtn.edu%2Fwordpress%2Fwp-content%2Fuploads%2F22950856_blmvt.jpg&f=1&nofb=1" alt="Twitoff" width="1325" height="130">
   </body>
 </html>

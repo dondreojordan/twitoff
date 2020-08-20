@@ -10,6 +10,11 @@ pylint = "*"
 flask = "*"
 jinja2 = "*"
 flask-sqlalchemy = "*"
+basilica = "*"
+tweepy = "*"
+python-dotenv = "*"
+scikit-learn = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.8"
