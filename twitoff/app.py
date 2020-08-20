@@ -1,4 +1,5 @@
 """Main app/routing file for TwitOff."""
+from os import getenv
 from flask import Flask, render_template, request
 from .models import DB, User
 from .predict import predict_user
